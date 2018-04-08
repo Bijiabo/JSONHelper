@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 
 
 typedef struct kv_pair
@@ -8,6 +9,24 @@ typedef struct kv_pair
     char key[100];
     char value[100];
 } kv_pair;
+
+void append_string_on_variable(char *str, char *append_string) {
+    int str_len = strlen(str);
+    int append_string_len = strlen(append_string);
+    str = realloc(str, sizeof(char)*11);
+    str = strcat(str, append_string);
+}
+
+
+
+//char* generate_JSON_item(char *key, char *value, int is_last_one)
+//{
+//    char *result = malloc(sizeof(char));
+//    strcat2(&result, "\"", key, "\":\"", value, is_last_one ? "\"" : "\",");
+//    return result;
+//}
+
+
 
 void build_JSON_string(kv_pair *kv)
 {
@@ -53,6 +72,12 @@ void build_JSON_string(kv_pair *kv)
     printf("result %s", result);
 }
 
+int setIncludes (char *includes[]) {
+    size_t count = 0;
+    while (includes[count] != NULL) count++;
+    // Length is count.
+}
+
 int main() {
     printf("Hello, World!\n");
     printf("I want to write something\n");
@@ -81,6 +106,13 @@ int main() {
     data[1] = age;
 
     build_JSON_string(data);
+
+//    generate_JSON_item("name", "Chambers", 1);
+    char *test = malloc(0);
+    append_string_on_variable(test, "workd");
+
+    printf("\n\ntest: %s", test);
+
 
     return 0;
 }
